@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bhii65uddyu8r"]
+
+[ext_resource type="Script" uid="uid://brd8hd855i4gr" path="res://Tests/Curve2DTest/Curve2dTest.cs" id="1_nyf1b"]
+
+[node name="Curve2dTest" type="Node2D" unique_id=529526475]
+script = ExtResource("1_nyf1b")
+
+[node name="Curve" type="Line2D" parent="." unique_id=2125455405]
+
+[node name="Lines" type="Line2D" parent="." unique_id=197302577]
+points = PackedVector2Array(-9, 523, 421, 409, 594, 458, 763, 411, 1159, 421)

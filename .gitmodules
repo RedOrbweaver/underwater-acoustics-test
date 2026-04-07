@@ -1,0 +1,6 @@
+[submodule "RedGodotLib4"]
+	path = RedGodotLib4
+	url = https://github.com/RedOrbweaver/RedGodotLib4
+[submodule "UnderWaterAcousticsLib"]
+	path = UnderWaterAcousticsLib
+	url = https://github.com/RedOrbweaver/UnderWaterAcousticsLib
