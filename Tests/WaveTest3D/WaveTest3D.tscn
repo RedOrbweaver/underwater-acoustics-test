@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dx2ksxh8hvcra"]
+
+[ext_resource type="Script" uid="uid://cj82301hrgmmt" path="res://Tests/WaveTest3D/WaveTest3d.cs" id="1_l1ei1"]
+[ext_resource type="Script" uid="uid://djkuxrfcyk0a2" path="res://Tests/WaveTest3D/Pool.cs" id="2_dg8eq"]
+[ext_resource type="Script" uid="uid://cbpj1oi51waqi" path="res://Tests/WaveTest3D/SimpleWave.cs" id="3_dg8eq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kbbay"]
+shading_mode = 0
+albedo_color = Color(0.62316084, 0.59326833, 0.73046875, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_awq14"]
+material = SubResource("StandardMaterial3D_kbbay")
+flip_faces = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg8eq"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.01
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icotq"]
+next_pass = SubResource("StandardMaterial3D_dg8eq")
+stencil_mode = 1
+stencil_flags = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_kbbay"]
+material = SubResource("StandardMaterial3D_icotq")
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6g0i"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.01
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kso2i"]
+next_pass = SubResource("StandardMaterial3D_m6g0i")
+shading_mode = 0
+albedo_color = Color(1, 0.3808294, 0, 1)
+stencil_mode = 1
+stencil_flags = 2
+
+[sub_resource type="Environment" id="Environment_dg8eq"]
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="WaveTest3d" type="Node3D" unique_id=440364654]
+script = ExtResource("1_l1ei1")
+
+[node name="Pool" type="MeshInstance3D" parent="." unique_id=1449817464]
+transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("BoxMesh_awq14")
+script = ExtResource("2_dg8eq")
+
+[node name="Source" type="Node3D" parent="." unique_id=1818137501]
+
+[node name="SimpleWave" type="MeshInstance3D" parent="Source" unique_id=1264894727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020139992, -0.0054130554, -0.018940032)
+mesh = SubResource("SphereMesh_kbbay")
+surface_material_override/0 = SubResource("StandardMaterial3D_kso2i")
+script = ExtResource("3_dg8eq")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=794763685]
+transform = Transform3D(0.9690416, -0.09521961, 0.22779731, 0, 0.9226391, 0.3856645, -0.24689753, -0.37372494, 0.89407563, 0.5395665, 1.2641617, 3.2965941)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=816586829]
+environment = SubResource("Environment_dg8eq")

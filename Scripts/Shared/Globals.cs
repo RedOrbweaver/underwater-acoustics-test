@@ -1,7 +1,7 @@
-global using static Godot;
+global using Godot;
 global using static Utils;
 global using static Globals;
-global using static UAWLib;
+global using UAWLib;
 
 public static class Globals
 {
